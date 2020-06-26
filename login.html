@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+    <style>
+        body{
+            background: url("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3252521864,872614242&fm=26&gp=0.jpg")     ;
+        }
+        .div1{
+            background-color: white;
+            width: 100%;
+            width: 900px;
+            height: 500px;
+            border: 8px solid #EEEEEE;
+            margin: auto;
+            margin-top: 15px
+
+        }
+        .lay_left{
+            float: left;
+        }
+        .center{
+
+            float: left;
+        }
+        .lay_right{
+            float: right;
+        }
+        #s_username{
+            color: red;
+        }
+    </style>
+
+
+    //新添加表单校验功能
+    <script>
+        window.onload = function () {
+            //对于名字的校验方法
+            document.getElementById("username").onblur = function checkName() {
+                //1. 获取name的值
+                var username = document.getElementById('username').value;
+                //2. 定义正则表达式
+                var reg_username = /^\w{2,15}$/
+                //4. 测试正则值是否和正则合法
+                var flag = reg_username.test(username);
+                if (flag) {
+                    var s_username = document.getElementById("s_username")
+                    s_username.innerHTML = "合法";
+                } else {
+                    var s_username = document.getElementById("s_username")
+                    s_username.innerHTML = "用户名非法";
+                }
+                return flag;
+            }
+
+            // 对于密码的验证
+            //0.给密码添加失去焦点就验证事件
+            document.getElementById("password").onblur = function checkpassword() {
+                //1. 获取密码的值
+                var password = document.getElementById("password").value;
+                //2. 定义正则表达式
+                var reg_password = /^\d{2,15}\w$/;
+                //3. 使用正则正则表达式验证秘密
+                var flag = reg_password.test(password);
+                if (flag) {
+                    document.getElementById("s_password").innerHTML = "密码合法"
+                } else {
+                    document.getElementById("s_password").innerHTML = "密码非法"
+                }
+                return flag;
+            }
+
+            // //添加提交事件
+            // document.getElementById("from").onsubmit = function () {
+            //     return "checkName()"&&"checkpassword()";
+            // }
+
+            var sub = document.getElementById("submit");
+            sub.onclick = function () {
+                var name = document.getElementById("username").value;
+                var passwd=document.getElementById("password").value;
+
+                if("zs"==name && passwd == "123"){
+                    alert("登录成功");
+                    window.location  = "抽奖.html";
+                }else{
+                    alert("您还不配")
+                }
+            }
+        }
+
+
+    </script>
+
+</head>
+<body>
+
+
+        <div class="div1">
+
+                <div class="lay_left">
+                    <p>新用户注册</p>
+                    <p>USER REGISTER</p>
+                </div>
+            <div class="center">
+<!--                <form action="#" method="get" name="from">-->
+                    <table>
+                        <tr>
+                            <td><label for="password">用户名</label></td>
+                            <td>
+                                <input type="text" name="username" placeholder="请输入用户名" id="username">
+                                <span id="s_username"></span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><label for="password">密码</label></td>
+                            <td>
+                                <input type="password" name="password" placeholder="请输入密码" id="password">
+                                <span id="s_password"></span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><label for="email">账户</label></td>
+                            <td><input type="email" name="email" placeholder="请输入邮箱" id="email"></td>
+                        </tr>
+
+                        <tr>
+                            <td><label for="name">姓名</label></td>
+                            <td><input type="text" name="name" placeholder="请输入真实姓名" id="name"></td>
+                        </tr>
+
+                        <tr>
+                            <td><label >性别</label></td>
+                            <td><input type="radio" name="gender" value="man" checked> 男 <input type="radio" name="gender" value="value"> 女 </td>
+                        </tr>
+
+                        <tr>
+                            <td>出生日期</td>
+                            <td><input type="date" name="birth" value="birth"></td>
+                        </tr>
+
+                        <tr>
+                            <td>验证码</td>
+                            <td><input type="text" name="yzm" > <img src="image" alt="验证码"></td>
+                        </tr>
+
+                        <tr>
+                            <td><input type="submit" value="登录" id="submit" ></td>
+                        </tr>
+                    </table>
+<!--                </form>-->
+            </div>
+
+            <div class="lay_right">
+                已有账号<a href="#">立即登录</a>
+            </div>
+        </div>
+
+
+
+
+</body>
+</html>
